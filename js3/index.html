@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <script>
+            let firstname=prompt('Please Enter Your FirstName','ALi');
+            let lastname=prompt('Please Enter Your LastName','Mohammadi');
+            let birthday=prompt('Please Enter Your Year Birthday','1370');
+            let qad=prompt('Please Enter Your Qad(CM)','150');
+            let vazn=prompt('Please Enter Your Vazn(KG)','55');
+            let result,yrr;
+
+            qad/=100;
+            qad*=qad;
+            bmi=vazn/qad;
+            bmi=bmi.toFixed(1);
+            if(bmi <= 18.4){
+                result="Your BMI is "+bmi+" which means you are Underweight";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                result="Your BMI is "+bmi+" which means You are Normal";
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                result="Your BMI is "+bmi+" which means You are Overweight";
+            } else if (bmi >= 30) {
+                result="Your BMI is "+bmi+" which means You are Obese";
+            }
+
+            const year='1401';
+            const age=year-birthday;
+            const yrb=birthday+6;
+            const yr=yrb%12;
+
+            switch(yr){
+                case 1:
+                    yrr='Mouse';
+                    break;
+                case 2:
+                    yrr='Bos';
+                    break;
+                case 3:
+                    yrr='Panther';
+                    break;
+                case 4:
+                    yrr='Rabbit';
+                    break;
+                case 5:
+                    yrr='Whale';
+                    break;
+                case 6:
+                    yrr='Snake';
+                    break;
+                case 7:
+                    yrr='Horse';
+                    break;
+                case 8:
+                    yrr='Sheep';
+                    break;
+                case 9:
+                    yrr='Monkey';
+                    break;
+                case 10:
+                    yrr='Chicken';
+                    break;
+                case 11:
+                    yrr='Dog';
+                    break;
+                case 12:
+                    yrr='Pig';
+                    break;
+                default:
+                    yrr='Not Valid';
+                    break;
+            }
+
+            var out="Hello "+firstname+" "+lastname+"\nYour age is "+age+" and your birthday animal is "+yrr+"!"+result;
+
+            alert(out);
+        </script>
+    </body>
+</html>
