@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <script>
+            let count=1;
+            do{
+                console.log(count);
+                count++;
+            }while(count <= 100)
+
+            let c = 0;
+            do{
+                c++;
+                console.log(`before continute ${c}`);
+                if (c === 5) {
+                    continue;
+                }
+                console.log(`after continute ${c}`);
+            }while(c <= 10)
+        </script>
+    </body>
+</html>
