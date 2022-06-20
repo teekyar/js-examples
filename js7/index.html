@@ -2,9 +2,22 @@
 <html>
     <head>
         <title>JavaScript</title>
+        <style>
+            #list{
+                display:flex;
+                flex-direction:row;
+                flex-wrap:wrap;
+            }
+            #list div{
+                border-radius:50px;
+            }
+            #list div img{
+                border-radius: 50px;
+            }
+        </style>
     </head>
     <body>
-        <div id="list" style="display: flex; flex-direction: row; flex-wrap: wrap;"></div>
+        <div id="list"></div>
         <script>
             const list=document.querySelector("#list");
 
