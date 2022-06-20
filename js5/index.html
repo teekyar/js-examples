@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <ul class="list"></ul>
+        <br />
+        <center>
+            <input id="input">
+            <button id="add">اضافه کردن</button>
+            <button id="rond">قرعه کشی</button>
+        </center>
+        <h1 id="result" style="text-align:center;"></h1>
+        <script>
+            let list=document.getElementsByClassName("list")[0],input=document.getElementById("input"),add=document.querySelector("#add"),rond=document.querySelector("#rond"),result=document.querySelector("#result"),peoples=[];
+            add.onclick=()=>{
+                const NE=document.createElement("li");
+                NE.innerText=input.value;
+                list.append(NE)
+                peoples.push(input.value)
+                input.value="";
+                debugger;
+            }
+            rond.onclick=()=>{
+                debugger;
+                const RN=Math.floor(Math.random() * peoples.length)
+                result.innerText=peoples[RN];
+            }
+        </script>
+    </body>
+</html>
