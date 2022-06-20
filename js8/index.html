@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+        <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #807878;
+        }
+        .box{
+            background-color: #d0cccc;
+            border-radius: 50px;
+            margin: 300px;
+            text-align: center;
+            padding: 10px;
+            height: 260px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        .box input{
+            width:200px;
+            text-align: center;
+        }
+        #timerElement{
+            border: 1px solid red;
+            background: red;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            width: 240px;
+            animation: timerAnimation 2000ms infinite;
+            animation-direction: alternate;
+        }
+        @keyframes timerAnimation{
+            from{
+                background-color: red;
+                border-radius: 32px
+            }
+            to{
+                background-color: yellow;
+                border-radius: 16px
+            }
+        }
+        span{
+            font-size: 40px;
+            font-family: fantasy;
+            text-shadow: 3px 3px 1px white;
+        }
+        </style>
+    </head>
+    <body>
+        <script>
+            alert('بازی حدس عدد با زمان محدود:سیستم عددی بین 1 تا 1000 به طور راندوم انتخاب و شما باید آن عدد را قبل از اتمام زمان حدس زده و در باکس وارد کنید.');
+        </script>
+        <div class="box">
+            <center><input type="text" id="unum" placeholder="عدد حدسی را وارد کنید">
+            <h3 id="result"></h1>
+            <div id="timerElement">
+                <span id="minElement">03</span>
+                <span>:</span>
+                <span id="secElement">44</span>
+                <span>:</span>
+                <span id="mlsElement">850</span>
+            </div></center>
+        </div>
+        <script defer>
+            const number=Math.floor(Math.random() * 1000);
+            console.log(number);
+            let time=30000;
+            const unum=document.querySelector("#unum"),result=document.querySelector("#result"),minElement=document.querySelector("#minElement"),secElement=document.querySelector("#secElement"),mlsElement=document.querySelector("#mlsElement"),timerElement=document.querySelector("#timerElement");
+            let timer = setInterval(() => {
+                time -= 50;
+                if(time <= 0){
+                    clearInterval(timer);
+                    alert("باختی!")
+                    return;
+                }
+                if(time >= 15000){
+                    timerElement.style.animationDuration="1000ms"
+                }else if(time >= 10000){
+                    timerElement.style.animationDuration="500ms"
+                }else if(time >= 5000){
+                    timerElement.style.animationDuration="300ms"
+                }else{
+                    timerElement.style.animationDuration="100ms"
+                }
+                const min=Math.floor(time / 60000),sec=(Math.floor(time / 1000) % 60),mls=time % 1000;
+                minElement.innerText=min;
+                secElement.innerText=sec;
+                mlsElement.innerText=mls;
+            }, 50)
+            unum.onkeyup = (e) => {
+                if(e.key === "Enter"){
+                    if(time <= 0){
+                        return;
+                    }
+                    if(unum.value == number){
+                        clearInterval(timer);
+                        alert("برنده شدی!");
+                    }
+                    if(unum.value > number) {
+                        result.innerText="عدد منفیست-";
+                    }else if(unum.value < number){
+                        result.innerText="عدد مثبتست+";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
