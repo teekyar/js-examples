@@ -37,7 +37,7 @@
                 };
                 peoples.push(p)
                 const newpeopleElement = document.createElement('li');
-                newpeopleElement.innerText = p.fname+' '+p.lname+', age: '+p.age+' '+p.gender;
+                newpeopleElement.innerText = p.fname+' '+p.lname+', سن: '+p.age+' '+p.gender;
                 list.appendChild(newpeopleElement)
                 firstName.value = '';
                 lastName.value = '';
@@ -46,7 +46,7 @@
                 }
             }
             result.onclick = () => {
-                alert('Mans:'+getMC()+'\nFemales:'+getFC()+'\nMans between 18 & 28:'+getMCB18A28()+'\nFemales between 18 & 28:'+getFCB18A28());
+                alert('تعداد آقایان:'+getMC()+'\nتعداد بانوان:'+getFC()+'\nتعداد کل آقایان گروه سنی 18 سال تا 28 سال:'+getMCB18A28()+'\nتعداد کل خانم های گروه سنی 18 سال تا 28 سال:'+getFCB18A28());
             }
             function getStatiscs(){
                 let MC=0,FC=0,MCB18A28=0,FCB18A28=0;
