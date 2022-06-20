@@ -1,3 +1,3 @@
 # Information
-<img src="js5-demo.png"></img>
+<img src="js5-demo.PNG"></img>
 https://teekyar.ir/blog/js-simple-qorekeshi/
