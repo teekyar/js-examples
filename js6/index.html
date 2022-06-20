@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <center>
+            <input id="firstName" type="text" placeholder="نام">
+            <input id="lastName" type="text" placeholder="نام خانوادگی">
+            <input id="age" type="text" placeholder="سن">
+            <select id="gender">
+                <option value="male" selected>مرد</option>
+                <option value="female">زن</option>
+            </select>
+            <ol style="text-align:left;" id="list"></ol><br>
+            <button id="add">اضافه کردن</button>
+            <button id="result">نتیجه</button>
+        </center>
+        <script>
+            let firstName=document.querySelector("#firstName"),lastName=document.querySelector("#lastName"),age=document.querySelector("#age"),gender=document.querySelector("#gender"),list=document.querySelector("#list"),add=document.querySelector("#add"),result=document.querySelector("#result"),peoples=[];
+            function empty(val){
+                if(typeof val == undefined || val == null || val == '' || val == ""){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            add.onclick = () => {
+                if(empty(firstName.value) && empty(lastName.valu) && empty(age.value)){
+                    alert('تمام مقادیر باید تکمیل گردد!');
+                }else{
+                const p = {
+                    fname: firstName.value,
+                    lname: lastName.value,
+                    age: age.value,
+                    gender: gender.value
+                };
+                peoples.push(p)
+                const newpeopleElement = document.createElement('li');
+                newpeopleElement.innerText = p.fname+' '+p.lname+', age: '+p.age+' '+p.gender;
+                list.appendChild(newpeopleElement)
+                firstName.value = '';
+                lastName.value = '';
+                age.value = '';
+                gender.value = '';
+                }
+            }
+            result.onclick = () => {
+                alert('Mans:'+getMC()+'\nFemales:'+getFC()+'\nMans between 18 & 28:'+getMCB18A28()+'\nFemales between 18 & 28:'+getFCB18A28());
+            }
+            function getStatiscs(){
+                let MC=0,FC=0,MCB18A28=0,FCB18A28=0;
+                for(let i = 0; i < peoples.length; i++){
+                    if(peoples[i].gender == 'male'){
+                        MC++;
+                        if(peoples[i].age >= 18 && peoples[i].age <= 28){
+                            MCB18A28++;
+                        }
+                    }
+                    if(peoples[i].gender == 'female'){
+                        FC++;
+                        if(peoples[i].age >= 18 && peoples[i].age <= 28){
+                            FCB18A28++;
+                        }
+                    }
+                }
+                return{MC,FC,MCB18A28,FCB18A28};
+            }
+            function getMC(){
+                let MC=0;
+                for(let i = 0; i < peoples.length; i++){
+                    if(peoples[i].gender == 'male'){
+                        MC++;
+                    }
+                }
+                return MC
+            }
+            function getFC(){
+                let femaleList=peoples.filter(people => people.gender == 'female');
+                return femaleList.length;
+            }
+            function getFCB18A28(){
+                let femaleList=peoples.filter(people => people.gender == 'female' && people.age >= 18 && people.age <= 28);
+                return femaleList.length;
+            }
+            function getMCB18A28(){
+                let MCB18A28=0;
+                for(let i = 0; i < peoples.length; i++){
+                    if(peoples[i].gender == 'male' && peoples[i].age >= 18 && peoples[i].age <= 28){
+                        MCB18A28++;
+                    }
+                }
+                return MCB18A28;
+}
+        </script>
+    </body>
+</html>
