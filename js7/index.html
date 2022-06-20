@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <div id="list" style="display: flex; flex-direction: row; flex-wrap: wrap;"></div>
+        <script>
+            const list=document.querySelector("#list");
+
+            fetch("https://fakestoreapi.com/products")
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json);
+
+                    json.forEach(p => {
+                        const n=document.createElement('div');
+                        n.style.border="1px solid gray";
+                        n.style.maxWidth="150px";
+                        n.style.flexWrap="wrap";
+
+                        const img=document.createElement('img');
+                        img.src=p.image;
+                        img.style.width="100px";
+                        img.style.height="100px";
+                        n.appendChild(img);
+
+                        const title=document.createElement('p');
+                        title.innerText=p.title;
+                        n.appendChild(title);
+
+                        const price=document.createElement('p');
+                        price.innerText=p.price;
+                        n.appendChild(price);
+
+                        const description=document.createElement('p');
+                        description.innerText=p.description;
+                        n.appendChild(description);
+
+                        const id=document.createElement('p');
+                        id.innerText=p.id;
+                        n.appendChild(id);
+
+                        list.appendChild(n)
+                    })
+                });
+        </script>
+    </body>
+</html>
